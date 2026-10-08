@@ -97,5 +97,15 @@ def UniqueElements(arr): #   [1,1,2,2,3,3,4,4]
             arr[l] = arr[r]
     return l+1
 
-print(UniqueElements( [1,1,2,2,3,3,4,4]))
+def containsDuplicates(nums,k):
+    h = set()
+    for i in range(len(nums)):
+        if i in h:
+            return True
 
+        h.add(nums[i])
+
+        if i >= k:
+            h.remove(nums[i - k]) 
+
+print(containsDuplicates(nums = [1,2,3,1], k = 3))
