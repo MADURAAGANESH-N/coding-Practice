@@ -133,4 +133,36 @@ def max_sum_of_arr(nums , k): #nums = [2, 1, 5, 1, 3, 2] , k = 3
         max_sum = max(max_sum , curr)
     return max_sum
 
+def longest_subarray(nums, k):
+    curr_sum = 0
+    max_length = 0
+    left = 0
 
+    for i in range(len(nums)):
+        curr_sum+=nums[i]
+
+        while curr_sum > k:
+            curr_sum-=nums[left]
+            left+=1
+
+        max_length = max(max_length , i - left + 1)
+    return max_length
+
+def min_subarray_len(target, nums): #nums = [2, 3, 1, 2, 4, 3] ,target = 7
+    curr_sum = 0
+    min_length = len(nums) + 1   # if maximum  to take as takes 0(min)  ----> if minimum to take it as length(arr)
+    left = 0
+    count = 0
+
+    for i in range(len(nums)):
+        curr_sum+=nums[i]
+
+        while curr_sum >= target :
+            min_length = min(min_length, i - left + 1)
+            curr_sum-=nums[left]
+            left+=1
+        
+    if curr_sum == len(nums) + 1:
+        return 0
+    return min_length
+print(min_subarray_len(nums = [2, 3, 1, 2, 4, 3] ,target = 7))
