@@ -107,5 +107,30 @@ def containsDuplicates(nums,k):
 
         if i >= k:
             h.remove(nums[i - k]) 
+        return False
 
-print(containsDuplicates(nums = [1,2,3,1], k = 3))
+# def defuseBomb(code , k): # 
+#     curr_sum = sum(code[len(code) - k:k+1])
+#     return curr_sum
+
+
+# code = [2,4,9,3]
+# k = -2
+# print(k+1)
+# print([len(code) - k])
+# print(sum(code[len(code) - k:k+1]))
+
+def minimumSumSubarray(nums , l , r): #nums = [3, -2, 1, 4], l = 2, r = 3
+    print("")
+
+# minimumSumSubarray(nums = [3, -2, 1, 4], l = 2, r = 3)
+
+def max_sum_of_arr(nums , k): #nums = [2, 1, 5, 1, 3, 2] , k = 3
+    curr = sum(nums[:k])
+    max_sum = curr
+    for i in range(k,len(nums)):
+        curr = curr - nums[i - k] + nums[i] # currentsum - outgoingElement + incommingElement
+        max_sum = max(max_sum , curr)
+    return max_sum
+
+
